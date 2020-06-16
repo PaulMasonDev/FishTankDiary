@@ -23,7 +23,8 @@ mongoose.set('useUnifiedTopology', true); //Fixed deprication errors
 
 // mongoose.connect("mongodb://localhost/fishtank_diary_app");
 
-mongoose.connect(process.env.DATABASEURL, {
+
+mongoose.connect(process.env.DATABASEURL || "mongodb://localhost/fishtank_diary_app", {
     useNewUrlParser: true,
     useCreateIndex: true
 }).then(() => {
@@ -67,7 +68,7 @@ app.use("/posts/:id/comments/", commentRoutes);
 app.use("/posts", postRoutes);
 
 // // SERVER INIT
-app.listen(process.env.PORT, process.env.IP, function(){
+app.listen(3000 || (process.env.PORT, process.env.IP), function(){
     console.log("SERVER IS RUNNING!");
 });
 
