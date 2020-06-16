@@ -19,7 +19,7 @@
                 if(post.author.username === currentUser.username){ %>
                     <div class="item">
                         <ul>
-                            <li><i class="far fa-calendar"></i>Date of Entry: <%= post.created.toLocaleDateString() + " at " + post.created.toLocaleTimeString() %></li>
+                            <li><i class="far fa-calendar"></i>Date: <%= post.created.toLocaleDateString() + " at " + post.created.toLocaleTimeString() %></li>
                             <li><i class="fas fa-eye-dropper"></i></i>pH Level: <%= post.phLevel %></li>
                             <li><i class="fas fa-flask"></i></i>Nitrates: <%= post.nitrates %></li>
                             <li><i class="fas fa-flask"></i></i>Nitrites: <%= post.nitrites %></li>

@@ -94,7 +94,23 @@ input[type="range"]{
     background: #2865a2;
 }
 
+.mobileEntry {
+    width: auto; 
+    margin: 25px;
+}
 
+@media (min-width: 766px) {
+    .mobileEntry {
+        margin: 25px 60px;
+
+    }
+}
+
+@media (min-width: 1500px) {
+    .mobileEntry {
+        margin: 25px 100px;
+    }
+}
 
 
 
