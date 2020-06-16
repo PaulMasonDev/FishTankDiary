@@ -1,0 +1,206 @@
+<%- include("../partials/header") %>
+
+
+    <div class="row">
+        <h1 style="text-align: center;">Edit Entry</h1>
+        <div style="width: 375px; margin: 25px auto;">
+
+            <form style="display: inline" class="ui form" onsubmit="return confirm('Do you really want to change the entry?');" 
+            action="/posts/<%= post._id %>?_method=PUT" method=POST>
+
+                <div class="form-group">
+                    <label for="meeting-time">
+                        Your original date was: <%= post.created.toLocaleDateString() + " at " + post.created.toLocaleTimeString() %>   Please set the date and time that you want for this entry.
+                    </label>
+                    <input class="form-control" type="datetime-local" id="meeting-time" required name="post[created]" value=<%= post.created %>>
+                </div>
+
+                <div class="form-group">
+                    <label>pH Level</label>
+                    <select class="form-control" name="post[phLevel]">
+                        <option value="<%= post.phLevel %>"><%= post.phLevel %></option>
+                        <option value="Did Not Measure">Did Not Measure</option>
+                        <option value="6.0">6.0</option>
+                        <option value="6.4">6.4</option>
+                        <option value="6.6">6.6</option>
+                        <option value="6.8">6.8</option>
+                        <option value="7.0">7.0</option>
+                        <option value="7.2">7.2</option>
+                        <option value="7.4">7.4</option>
+                        <option value="7.6">7.6</option>
+                        <option value="7.8">7.8</option>
+                        <option value="8.0">8.0</option>
+                        <option value="8.2">8.2</option>
+                        <option value="8.4">8.4</option>
+                        <option value="8.8">8.8</option>
+                    </select>       
+                </div>
+                <div class="form-group">
+                    <label>Nitrates</label>
+                    <select class="form-control" name="post[nitrates]">
+                        <option value="<%= post.nitrates %>"><%= post.nitrates %></option>
+                        <option value="Did Not Measure">Did Not Measure</option>
+                        <option value="0 ppm">0  ppm</option>
+                        <option value="5 ppm">5  ppm</option>
+                        <option value="10 ppm">10 ppm</option>
+                        <option value="20 ppm">20 ppm</option>
+                        <option value="40 ppm">40 ppm</option>
+                        <option value="80 ppm">80 ppm</option>
+                        <option value="160 ppm">160 ppm</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Nitrites</label>
+                    <select class="form-control" name="post[nitrites]">
+                        <option value="<%= post.nitrites %>"><%= post.nitrites %></option>
+                        <option value="Did Not Measure">Did Not Measure</option>
+                        <option value="0 ppm">0  ppm</option>
+                        <option value="0.25 ppm">0.25  ppm</option>
+                        <option value="0.50 ppm">0.50 ppm</option>
+                        <option value="1.0 ppm">1.0 ppm</option>
+                        <option value="2.0 ppm">2.0 ppm</option>
+                        <option value="5.0 ppm">5.0 ppm</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Ammonia</label>
+                    <select class="form-control" name="post[ammonia]">
+                        <option value="<%= post.ammonia %>"><%= post.ammonia %></option>
+                        <option value="Did Not Measure">Did Not Measure</option>
+                        <option value="0 ppm">0  ppm</option>
+                        <option value="0.25 ppm">0.25  ppm</option>
+                        <option value="0.50 ppm">0.50 ppm</option>
+                        <option value="1.0 ppm">1.0 ppm</option>
+                        <option value="2.0 ppm">2.0 ppm</option>
+                        <option value="4.0 ppm">4.0 ppm</option>
+                        <option value="8.0 ppm">8.0 ppm</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Did You Change the Water?</label>
+                    <select class="form-control" id="waterBool" name="post[waterChanged]" required>
+                        <option value="<%= post.waterChanged %>"><%= post.waterChanged %></option>
+                        <option value="">--Please select Yes or No--</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+                <div id="water" class="form-group" style="outline:none;">
+                    <label class="hiddenWater">How Much Water Changed?</label>
+                    <input class="hiddenWater" type="range" list="tickmarks" name="post[waterAmount]" value="<%= post.waterAmount %>" id="waterAmount" min="0" max="100" onchange="updateTextInput(this.value);">
+                    <div id="waterButtons" class="hiddenWater">
+                        <span class="margin" ><button id="b0" type="button" class="btn btn-secondary btn-sm">0%</button></span>
+                        <span class="margin" ><button id="b25" type="button" class="btn btn-secondary btn-sm">25%</button></span>
+                        <span class="margin" ><button id="b50" type="button" class="btn btn-secondary btn-sm">50%</button></span>
+                        <span class="margin" ><button id="b75" type="button" class="btn btn-secondary btn-sm">75%</button></span>
+                        <span class="margin" ><button id="b100" type="button" class="btn btn-secondary btn-sm">100%</button></span>
+                    </div>
+                    <label for="waterAmount" class="hiddenWater">Water Amount by Percentage (ONLY IF CHANGED)</label>
+                    <datalist id="tickmarks" class="hiddenWater">
+                        <option value="0" label="0%"></option>
+                        <option value="5" label="5%"></option>
+                        <option value="10" label="10%"></option>
+                        <option value="15" label="15%"></option>
+                        <option value="20" label="20%"></option>
+                        <option value="25" label="25%"></option>
+                        <option value="30" label="30%"></option>
+                        <option value="35" label="35%"></option>
+                        <option value="40" label="40%"></option>
+                        <option value="45" label="45%"></option>
+                        <option value="50" label="50%"></option>
+                        <option value="55" label="55%"></option>
+                        <option value="60" label="60%"></option>
+                        <option value="65" label="65%"></option>
+                        <option value="70" label="70%"></option>
+                        <option value="75" label="75%"></option>
+                        <option value="80" label="80%"></option>
+                        <option value="85" label="85%"></option>
+                        <option value="90" label="90%"></option>
+                        <option value="95" label="95%"></option>
+                        <option value="100" label="100%"></option>            
+                    </datalist>
+                    <label class="hiddenWater" id="textInput" onchange="updateTextInput(this.value);">0%</label>
+                    <!-- <input class="hiddenWater" type="text" id="textInput" value="" onchange="updateRangeValue(this.value);"> -->
+                </div>
+                <div class="form-group">
+                    <label>Notes:</label>
+                    <textarea class="form-control" placeholder="Enter your note here..." name="post[notes]" style="margin-top: 0px; margin-bottom: 0px; height: 284px;"><%= post.notes %></textarea>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-warning">Update</button>
+                </div>                
+            </form>
+            <form style="display: inline-block;" id="back" action="/posts/<%= post._id %>" method="GET">
+                <button style="display: inline-block;" class="btn btn-primary">Back</button>
+            </form>
+        </div>
+    </div>
+  
+
+<script>
+    const waterChanged = document.getElementById("waterBool");
+    const waterToggle = document.getElementsByClassName("hiddenWater");
+    const waterAmount = document.getElementById("waterAmount");
+    const textInput = document.getElementById("textInput");
+
+    const b0 = document.getElementById("b0");
+    const b25 = document.getElementById("b25");
+    const b50 = document.getElementById("b50");
+    const b75 = document.getElementById("b75");
+    const b100 = document.getElementById("b100");
+
+    b0.addEventListener("click", function(){
+        waterAmount.value = "0";
+        textInput.textContent = "0%";
+    });
+
+    b25.addEventListener("click", function(){
+        waterAmount.value = "25";
+        textInput.textContent = "25%";
+    });
+
+    b50.addEventListener("click", function(){
+        waterAmount.value = "50";
+        textInput.textContent = "50%";
+    });
+
+    b75.addEventListener("click", function(){
+        waterAmount.value = "75";
+        textInput.textContent = "75%";
+    });
+
+    b100.addEventListener("click", function(){
+        waterAmount.value = "100";
+        textInput.textContent = "100%";
+    });
+
+    waterChanged.addEventListener('change', function(event) {
+        if (waterChanged.value === "Yes") {
+            for(i = 0; i < waterToggle.length; i++){
+                waterToggle[i].style.opacity = "1.0";
+                waterToggle[i].style.pointerEvents = "auto";
+            }
+        } else {
+            for(i = 0; i < waterToggle.length; i++){
+                waterToggle[i].style.opacity = "0.5";
+                waterToggle[i].style.pointerEvents = "none";
+                waterAmount.value = "0";
+                textInput.textContent = "0";
+            }
+        }
+    });
+
+    textInput.addEventListener('change', function(event) {
+        textInput.textContent += "%";
+    })
+
+    function updateTextInput(val) {
+          document.getElementById('textInput').textContent = val + "%"; 
+        }
+
+    function updateRangeValue(val) {
+        document.getElementById('waterAmount').value=val; 
+    }
+    
+</script>
+<%- include("../partials/footer") %>

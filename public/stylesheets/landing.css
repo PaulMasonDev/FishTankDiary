@@ -1,0 +1,88 @@
+body {
+    background-color: #000;
+  }
+
+#landing-header {
+    z-index: 1;
+    position: relative;
+    text-align: center;
+    padding-top: 40vh;
+}
+
+#landing-header h1 {
+    color: #fff;
+}
+
+.slideshow { 
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.slideshow li { 
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-size: cover;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+    opacity: 0;
+    z-index: 0;
+    animation: imageAnimation 50s linear infinite; 
+}
+
+.slideshow li:nth-child(1) { 
+    background-image: url(https://images.unsplash.com/photo-1579120775207-29ee08850582?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1300&q=80);
+    /* Photo by Ludovic Migneault on Unsplash */
+}
+.slideshow li:nth-child(2) { 
+    background-image: url(https://images.unsplash.com/photo-1572438131134-ec29490abfba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80);
+    animation-delay: 10s;
+    /* Photo by Sangga Rima Roman Selia on Unsplash */
+}
+.slideshow li:nth-child(3) { 
+    background-image: url(https://images.unsplash.com/photo-1575277536302-47de349f2bda?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1516&q=80);
+    animation-delay: 20s;
+    /* Photo by Sandra Seitamaa on Unsplash */
+}
+.slideshow li:nth-child(4) { 
+    background-image: url(https://images.unsplash.com/photo-1567022724957-68fbf611ca75?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1489&q=80);
+    animation-delay: 30s;
+    /* Photo by Anastasia Dulgier on Unsplash */
+}
+.slideshow li:nth-child(5) { 
+    background-image: url(https://images.unsplash.com/photo-1581759880933-16b8962a523e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80);
+    animation-delay: 40s;
+    /* Photo by Nur Taufik Zamari on Unsplash
+    Photo by Claudia Bachinger on Unsplash */
+}
+
+@keyframes imageAnimation { 
+    0% { 
+      opacity: 0; 
+      animation-timing-function: ease-in;
+    }
+    10% {
+      opacity: 1;
+      animation-timing-function: ease-out;
+    }
+    20% {
+      opacity: 1
+    }
+    30% {
+      opacity: 0
+    }
+}
+
+/* Older browser support - .no-cssanimations class added by modernizr */
+.no-cssanimations .slideshow li {
+	opacity: 1;
+}

@@ -1,0 +1,100 @@
+
+h1 {
+    text-align: center;
+}
+.navbar {
+    background-color: #e3f2fd;
+}
+
+.jumbotron {
+    background-color: #e3f2fd;
+}
+
+.navbar-brand {
+    font-size: 2em !important;
+    padding: 8.5px;
+}
+
+i {
+
+    margin-right: 15px;
+}
+
+div {
+    padding:2px;
+    
+}
+
+textarea {
+    resize: vertical;
+}
+
+
+
+div.item {
+    margin: auto;
+    
+}
+
+
+input[type="range"] {
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+.nope {
+    font-size: 0.8em;
+}
+
+.container.main {
+    margin-top: 3em;
+}
+ul {
+    padding-left:0px;
+}
+li {
+    list-style: none;
+    font-size: 1.5em;
+    vertical-align: middle;
+}
+
+input[type="range"]{
+    width:100%;
+  }
+
+.hiddenWater {
+    opacity: 0.2;
+    pointer-events: none;
+    /* visibility: hidden; */
+    /* display: none; */
+}
+
+#delete, #back, #back2, .waterButton {
+    display: inline;
+}
+
+#textInput {
+    font-size: 1.5em;
+}
+
+#waterButtons {
+    text-align:center;
+    padding-bottom: 25px;
+}
+
+.margin {
+    margin-left:10px;
+    margin-right:10px;
+}
+
+#comment {
+    margin-top:25px;
+}
+
+.ui.inverted.menu {
+    background: #2865a2;
+}
+
+
+
+
+
