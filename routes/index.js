@@ -112,7 +112,7 @@ router.post('/forgot', function(req, res, next) {
           service: 'Gmail', 
           auth: {
             user: 'fishtankdiary2020@gmail.com',
-            pass: "Engaged91717" //process.env.GMAILPW
+            pass: process.env.GMAILPW //process.env.GMAILPW
           }
         });
         var mailOptions = {
@@ -178,7 +178,7 @@ router.post('/reset/:token', function(req, res) {
           service: 'Gmail', 
           auth: {
             user: 'fishtankdiary2020@gmail.com',
-            pass: "Engaged91717" ///change to heroku cfg file before upload. process.env.GMAILPW
+            pass: process.env.GMAILPW ///change to heroku cfg file before upload. process.env.GMAILPW
           }
         });
         var mailOptions = {
