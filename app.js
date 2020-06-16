@@ -19,7 +19,17 @@ const commentRoutes    = require("./routes/comments"),
 mongoose.set('useNewUrlParser', true); //Fixed deprication errors
 mongoose.set('useUnifiedTopology', true); //Fixed deprication errors
 
-mongoose.connect("mongodb://localhost/fishtank_diary_app");
+// mongoose.connect("mongodb://localhost/fishtank_diary_app");
+
+mongoose.connect('mongodb+srv://pmasonsocal:Engaged91717@cluster0-l04lq.mongodb.net/<dbname>?retryWrites=true&w=majority', {
+    useNewUrlParser: true,
+    useCreateIndex: true
+}).then(() => {
+    console.log('Connected to DB!');
+}).catch(err => {
+    console.log('ERROR:', err.message);
+});
+
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -55,6 +65,6 @@ app.use("/posts/:id/comments/", commentRoutes);
 app.use("/posts", postRoutes);
 
 // SERVER INIT
-app.listen(3000, function(){
+app.listen(process.env.PORT, process.env.IP, function(){
     console.log("SERVER IS RUNNING!");
 });
