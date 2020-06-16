@@ -65,12 +65,12 @@ app.use("/posts/:id/comments/", commentRoutes);
 app.use("/posts", postRoutes);
 
 // // SERVER INIT
-// app.listen(process.env.PORT, process.env.IP, function(){
-//     console.log("SERVER IS RUNNING!");
-// });
-
-// TESTING LOCAL ROUTE - BE SURE TO DISABLE SERVER INIT
-app.listen(3000, function(){
+app.listen(process.env.PORT, process.env.IP, function(){
     console.log("SERVER IS RUNNING!");
 });
+
+// TESTING LOCAL ROUTE - BE SURE TO DISABLE SERVER INIT
+// app.listen(3000, function(){
+//     console.log("SERVER IS RUNNING!");
+// });
 
