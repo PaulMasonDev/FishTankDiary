@@ -11,6 +11,8 @@ const express          = require("express"),
       Comment          = require("./models/comment"),
       User             = require("./models/user");
 
+require('dotenv').config()
+
 const commentRoutes    = require("./routes/comments"),
       postRoutes       = require("./routes/posts"),
       indexRoutes      = require("./routes/index");
@@ -21,7 +23,7 @@ mongoose.set('useUnifiedTopology', true); //Fixed deprication errors
 
 // mongoose.connect("mongodb://localhost/fishtank_diary_app");
 
-mongoose.connect('mongodb+srv://pmasonsocal:Engaged91717@cluster0-l04lq.mongodb.net/<FishTankDiary>?retryWrites=true&w=majority', {
+mongoose.connect(process.env.DATABASEURL, {
     useNewUrlParser: true,
     useCreateIndex: true
 }).then(() => {
