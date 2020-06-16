@@ -24,7 +24,7 @@
 
     <div class="row">
         <h1 style="text-align: center">
-            Edit Comment for <%= post.created.toLocaleDateString() + " at " + post.created.toLocaleTimeString() %>
+            Edit Comment
         </h1>
         <div>
             <form id="back2" action="/posts/<%= post._id %>/comments/<%= comment._id %>?_method=PUT" method="POST">
