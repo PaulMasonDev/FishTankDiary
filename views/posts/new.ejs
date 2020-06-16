@@ -7,7 +7,7 @@
             <form action="/posts" method="POST">
                 <div class="form-group">
                     <label for="meeting-time">Choose the date and time for this entry</label>
-                    <input class="form-control" type="datetime-local" id="meeting-time" name="created" value="<%= Date.now() %>">
+                    <input class="form-control" type="datetime-local" id="meeting-time" name="created" value="<%= Date.now %>">
                     <!-- <input class="form-control" type="datetime-local"  name="createdAt" value="<%= Date.now() %>"> Not working ATM -->
         
                 </div>
@@ -191,6 +191,16 @@
     // function updateRangeValue(val) {
     //     document.getElementById('waterAmount').value = val; 
     // }
-    
+
+// get the iso time string formatted for usage in an input['type="datetime-local"']
+const tzoffset = (new Date()).getTimezoneOffset() * 60000; //offset in milliseconds
+const localISOTime = (new Date(Date.now() - tzoffset)).toISOString().slice(0,-1);
+const localISOTimeWithoutSeconds = localISOTime.slice(0,16);
+
+// select the "datetime-local" input to set the default value on
+const dtlInput = document.querySelector('input[type="datetime-local"]');
+
+// set it and forget it ;)
+dtlInput.value = localISOTime.slice(0,16);
 </script>
 <%- include("../partials/footer") %>
