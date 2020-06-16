@@ -21,7 +21,7 @@ mongoose.set('useUnifiedTopology', true); //Fixed deprication errors
 
 // mongoose.connect("mongodb://localhost/fishtank_diary_app");
 
-mongoose.connect('mongodb+srv://pmasonsocal:process.env.MONGODBPW@cluster0-l04lq.mongodb.net/<FishTankDiary>?retryWrites=true&w=majority', {
+mongoose.connect('mongodb+srv://pmasonsocal:process.env.<MONGODBPW>@cluster0-l04lq.mongodb.net/<FishTankDiary>?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useCreateIndex: true
 }).then(() => {
