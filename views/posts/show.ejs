@@ -5,7 +5,7 @@
         <h3><i class="far fa-calendar"></i><%= post.created.toDateString() + " at " + post.created.toLocaleTimeString() %></h3>
         <p>
             <em>
-                Submitted by: <strong><%= post.author.username %></strong>
+                Submitted by: <a href="/users/<%= post.author.id %>"><strong><%= post.author.username %></strong></a>
             </em>
         </p>       
     </div>

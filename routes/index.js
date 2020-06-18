@@ -5,6 +5,7 @@ const User = require("../models/user");
 const async = require("async");
 const nodemailer = require("nodemailer");
 const crypto = require("crypto");
+const user = require("../models/user");
 
 //===================
 // require("dotenv").config();
@@ -12,7 +13,7 @@ const crypto = require("crypto");
 //===================
 
 
-// RESTful ROUTES
+//RESTful ROUTES
 
 router.get("/", function(req, res){
     res.render("landing");
@@ -31,10 +32,10 @@ router.get("/register", function(req, res){
 router.post("/register", function(req, res){
     if(req.body.email !== req.body.emailConfirm){
       req.flash("error", "Your e-mail addresses don't match. Please try again.")
-      res.redirect("register");
+      res.render("register", req.body);
     } else if(req.body.password !== req.body.passwordConfirm) {
       req.flash("error", "Your passwords don't match. Please try again.")
-      res.redirect("register");
+      res.render("register", req.body);
     } else {
       if(req.body.adminCode === "secretcode123"){
         newUser.isAdmin = true;
@@ -42,13 +43,16 @@ router.post("/register", function(req, res){
 
       const newUser = new User({
         username: req.body.username, 
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        avatar: req.body.avatar,
         email: req.body.email
       });
 
       User.register(newUser, req.body.password, function(err, user){
         if(err){
-            req.flash("error", err.message);
-            return res.redirect("/register");
+          console.log(err);
+          return res.render("register", {error: err.message});
           }
         passport.authenticate("local")(req, res, function(){
             req.flash("success", "Welcome to Fish Tank Diary " + user.username);
@@ -67,6 +71,7 @@ router.get("/login", function(req, res){
 router.post("/login", passport.authenticate("local", 
 {
     successRedirect: "/posts",
+    successFlash: `You have successfully logged in.`,    
     failureRedirect: "/login", 
 }), function(req, res){
     
@@ -77,6 +82,18 @@ router.get("/logout", function(req, res){
     req.logout();
     req.flash("success", "Logged You Out!");
     res.redirect("/posts");
+});
+
+// USER PROFILES
+router.get("/users/:id" , function(req, res){
+    User.findById(req.params.id, function(err, foundUser){
+      if(err){
+        req.flash("error", "Something went wrong.");
+        res.redirect("/");
+      } else {
+        res.render("users/show", {user: foundUser});
+      }
+    });
 });
 
 // Add reset Password routes

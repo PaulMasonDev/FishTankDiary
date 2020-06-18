@@ -11,7 +11,8 @@ const express          = require("express"),
       Comment          = require("./models/comment"),
       User             = require("./models/user");
 
-require('dotenv').config()
+
+require('dotenv').config();
 
 const commentRoutes    = require("./routes/comments"),
       postRoutes       = require("./routes/posts"),
@@ -36,6 +37,7 @@ mongoose.connect(process.env.DATABASEURL || "mongodb://localhost/fishtank_diary_
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.urlencoded({extended: true}));
+
 app.use(expressSanitizer());
 app.use(methodOverride("_method"));
 app.use(flash());
@@ -68,7 +70,7 @@ app.use("/posts/:id/comments/", commentRoutes);
 app.use("/posts", postRoutes);
 
 // // SERVER INIT
-app.listen(process.env.PORT, process.env.IP, function(){
+app.listen((process.env.PORT, process.env.IP) || "3000", function(){
     console.log("SERVER IS RUNNING!");
 });
 
