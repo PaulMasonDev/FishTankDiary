@@ -31,10 +31,10 @@ router.get("/register", function(req, res){
 // handle signup logic
 router.post("/register", function(req, res){
     if(req.body.email !== req.body.emailConfirm){
-      req.flash("error", "Your e-mail addresses don't match. Please try again.")
+      req.flash("error", "Your e-mail fields don't match. Please try again.")
       res.render("register", req.body);
     } else if(req.body.password !== req.body.passwordConfirm) {
-      req.flash("error", "Your passwords don't match. Please try again.")
+      req.flash("error", "Your password fields don't match. Please try again.")
       res.render("register", req.body);
     } else {
       if(req.body.adminCode === "secretcode123"){
