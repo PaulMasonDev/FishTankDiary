@@ -25,14 +25,14 @@ mongoose.set('useUnifiedTopology', true); //Fixed deprication errors
 // mongoose.connect("mongodb://localhost/fishtank_diary_app");
 
 
-// mongoose.connect(process.env.DATABASEURL , {
-//     useNewUrlParser: true,
-//     useCreateIndex: true
-// }).then(() => {
-//     console.log('Connected to DB!');
-// }).catch(err => {
-//     console.log('ERROR:', err.message);
-// });
+mongoose.connect(process.env.DATABASEURL , {
+    useNewUrlParser: true,
+    useCreateIndex: true
+}).then(() => {
+    console.log('Connected to DB!');
+}).catch(err => {
+    console.log('ERROR:', err.message);
+});
 
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
