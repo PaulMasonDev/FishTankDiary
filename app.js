@@ -22,17 +22,17 @@ const commentRoutes    = require("./routes/comments"),
 mongoose.set('useNewUrlParser', true); //Fixed deprication errors
 mongoose.set('useUnifiedTopology', true); //Fixed deprication errors
 
-mongoose.connect("mongodb://localhost/fishtank_diary_app");
+// mongoose.connect("mongodb://localhost/fishtank_diary_app");
 
 
-// mongoose.connect(process.env.DATABASEURL , {
-//     useNewUrlParser: true,
-//     useCreateIndex: true
-// }).then(() => {
-//     console.log('Connected to DB!');
-// }).catch(err => {
-//     console.log('ERROR:', err.message);
-// });
+mongoose.connect(process.env.DATABASEURL , {
+    useNewUrlParser: true,
+    useCreateIndex: true
+}).then(() => {
+    console.log('Connected to DB!');
+}).catch(err => {
+    console.log('ERROR:', err.message);
+});
 
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
@@ -70,12 +70,12 @@ app.use("/posts/:id/comments/", commentRoutes);
 app.use("/posts", postRoutes);
 
 // // SERVER INIT
-// app.listen(process.env.PORT, process.env.IP, function(){
-//     console.log("SERVER IS RUNNING!");
-// });
-
-// TESTING LOCAL ROUTE - BE SURE TO DISABLE SERVER INIT
-app.listen(3000, function(){
+app.listen(process.env.PORT, process.env.IP, function(){
     console.log("SERVER IS RUNNING!");
 });
+
+// TESTING LOCAL ROUTE - BE SURE TO DISABLE SERVER INIT
+// app.listen(3000, function(){
+//     console.log("SERVER IS RUNNING!");
+// });
 
