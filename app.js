@@ -70,7 +70,7 @@ app.use("/posts/:id/comments/", commentRoutes);
 app.use("/posts", postRoutes);
 
 // // SERVER INIT
-app.listen(process.env.PORT, process.env.IP, function(){
+app.listen(process.env.PORT || 3000, function(){
     console.log("SERVER IS RUNNING!");
 });
 
