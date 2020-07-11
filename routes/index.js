@@ -219,8 +219,8 @@ router.post('/reset/:token', function(req, res) {
   });
 
 // HTTPS Config
-router.get('./well-known/acme-challenge/1p70shHMgbp1eMX8FVuKmrVtkCexbvkveIZ6WzeL9cI', (req, res) => {
-  res.send('1p70shHMgbp1eMX8FVuKmrVtkCexbvkveIZ6WzeL9cI._Ubg5UzH7joWqoCQQIH5RAnRssO_cjCJJgeBVI2uAtA');
+router.get('./well-known/acme-challenge/:content', (req, res) => {
+  res.send('f7Xtr8SFNLnvalYlh3Vb-rNOrIL7VsA5w3TDZHFe9j4._Ubg5UzH7joWqoCQQIH5RAnRssO_cjCJJgeBVI2uAtA');
 });
 
 router.get('/test', (req, res) => {
