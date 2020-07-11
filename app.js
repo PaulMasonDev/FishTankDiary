@@ -73,7 +73,10 @@ app.use("/posts", postRoutes);
 app.listen(process.env.PORT || 3000, function(){
     console.log("SERVER IS RUNNING!");
 });
-
+// HTTPS Config
+app.get('./well-known/acme-challenge/:content', (req, res) => {
+    res.send('8lUudCjtAoCVC9UEN0pwu3IXCJaYbhIWS5WX5E3LJWg._Ubg5UzH7joWqoCQQIH5RAnRssO_cjCJJgeBVI2uAtA');
+})
 // TESTING LOCAL ROUTE - BE SURE TO DISABLE SERVER INIT
 // app.listen(3000, function(){
 //     console.log("SERVER IS RUNNING!");
