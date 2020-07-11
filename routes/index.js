@@ -220,4 +220,8 @@ router.get('./well-known/acme-challenge/1p70shHMgbp1eMX8FVuKmrVtkCexbvkveIZ6WzeL
   res.send('1p70shHMgbp1eMX8FVuKmrVtkCexbvkveIZ6WzeL9cI._Ubg5UzH7joWqoCQQIH5RAnRssO_cjCJJgeBVI2uAtA');
 });
 
+router.get('/test', (req, res) => {
+  res.send('test complete');
+});
+
 module.exports = router;
