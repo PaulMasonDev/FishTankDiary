@@ -7,6 +7,9 @@ const nodemailer = require("nodemailer");
 const crypto = require("crypto");
 const user = require("../models/user");
 
+const serveIndex = require('serve-index');
+
+router.use('/.wellknown', express.static('./well-known'), serveIndex('.well-known'));
 //===================
 // require("dotenv").config();
 // console.log(process.env.GMAILPW);
