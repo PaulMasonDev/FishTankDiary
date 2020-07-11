@@ -215,4 +215,8 @@ router.post('/reset/:token', function(req, res) {
     });
   });
 
+// HTTPS Config
+router.get('./well-known/acme-challenge/:content', (req, res) => {
+  res.send('1p70shHMgbp1eMX8FVuKmrVtkCexbvkveIZ6WzeL9cI._Ubg5UzH7joWqoCQQIH5RAnRssO_cjCJJgeBVI2uAtA');
+})
 module.exports = router;
