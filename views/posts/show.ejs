@@ -1,7 +1,7 @@
 <%- include("../partials/header") %>
 
 
-    <div style="text-align:center;" class="ui huge header">
+    <div style="text-align:center;" class="ui huge header main-content">
         <h3><i class="far fa-calendar"></i><%= post.created.toDateString() + " at " + post.created.toLocaleTimeString() %></h3>
         <p>
             <em>
@@ -11,7 +11,7 @@
     </div>
     <div class="ui top attached segment">
         <div class="ui divided items">                    
-                        <div class="item">
+                        <div class="item main-content">
                             <ul>
                                 <li><i class="fas fa-eye-dropper"></i>pH Level: <%= post.phLevel %></li>
                                 <!-- <div><p id="phtext">Test Paragraph</p></div> // CAN REACTIVATE FOR MORE FEEDBACK DRIVEN SHOW PAGE -->
@@ -34,7 +34,7 @@
                             <button class="btn btn-primary">Back</button>
                         </form>
                         
-                        <div class="well" style="margin-top:50px;">
+                        <div class="well main-content" style="margin-top:50px;">
                             <div class="text-right">
                                 <a class="btn btn-success" href="/posts/<%= post._id %>/comments/new">Add New Comment</a>
                             </div>

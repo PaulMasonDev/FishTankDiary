@@ -2,7 +2,7 @@
 
 body {
   background: url('https://images.pexels.com/photos/932638/pexels-photo-932638.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260') no-repeat center center/cover;
-  height: 100vh;
+  background-attachment: fixed;
   font-family:'Roboto', sans-serif;
 }
 h1 {
@@ -150,7 +150,7 @@ input[type="range"]{
     margin-top: 50px;
   }
   .text-muted {
-    margin-top: 225px;
+    margin-top: 175px;
   }
 }
 
@@ -158,5 +158,26 @@ input[type="range"]{
   text-align: center;
   color:#e3f2fd;
 }
+
+#login-title, #signup-title {
+  text-align: center;
+  color: #e3f2fd;
+}
+
+#register-form div label,
+#new-entry-form,
+.main-content,
+#edit-post-form,
+#forgot-form,
+#reset-form,
+.new-comment-form {
+  color:#e3f2fd;
+}
+
+.well {
+  background-color: #197264;
+  border: none;
+}
+
 
 
