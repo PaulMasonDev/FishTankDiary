@@ -1,11 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+body {
+  background: url('https://images.pexels.com/photos/932638/pexels-photo-932638.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260') no-repeat center center/cover;
+  height: 100vh;
+  font-family:'Roboto', sans-serif;
+}
 h1 {
     text-align: center;
 }
 .navbar {
-    background-color: #e3f2fd;
+    background-color: #197264;
+    border: none;
+    color: #e3f2fd;
 }
-
+.navbar-default .navbar-nav>li>a {
+  color: #e3f2fd;
+}
 .jumbotron {
     background-color: #e3f2fd;
 }
@@ -13,6 +23,14 @@ h1 {
 .navbar-brand {
     font-size: 2em !important;
     padding: 8.5px;
+}
+
+.navbar-default .navbar-brand {
+  color: #e3f2fd;
+}
+
+.navbar-default .navbar-brand:hover {
+  color: black;
 }
 
 i {
@@ -29,10 +47,23 @@ textarea {
     resize: vertical;
 }
 
-#welcome {
-
+#welcome-message {
+  color: #e3f2fd;
+  margin-top: 200px;
 }
 
+#welcome-message h1 {
+  font-size: 5rem;
+}
+
+#login-prompt {
+  text-align: center;
+  color: #e3f2fd;
+}
+
+#login-btn {
+  margin: 13px 20px;
+}
 div.item {
     margin: auto;
     
@@ -114,5 +145,18 @@ input[type="range"]{
     }
 }
 
+@media (max-width:500px) {
+  #welcome-message {
+    margin-top: 50px;
+  }
+  .text-muted {
+    margin-top: 225px;
+  }
+}
+
+.text-muted{
+  text-align: center;
+  color:#e3f2fd;
+}
 
 

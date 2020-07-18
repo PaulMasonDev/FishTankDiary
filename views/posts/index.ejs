@@ -1,17 +1,17 @@
 <%- include("../partials/header") %>
 
-    <header class="jumbotron">
-        <div class="container">
+    <header>
+        <div class="container" id="welcome-message">
             <h1>Welcome to Fish Tank Diary!</h1>
         </div>  
     </header>
 
     <div class="row" style="display:flex; flex-wrap: wrap;">
         <% if(!currentUser){ %>
-            <div>
+            <div id="login-prompt" class="container">
                 <h3>Please login or signup to get started.</h3>
-                <a class="btn btn-primary" href="/login"><i class="fas fa-sign-in-alt"></i>Login</a></li>
-                <a style="display: inline-block;" class="btn btn-primary" href="/register"><i class="fas fa-user-plus"></i>Sign Up</a></li>
+                <a id="login-btn" class="btn btn-primary" href="/login"><i class="fas fa-sign-in-alt"></i>Login</a></li>
+                <a id="signup-btn" style="display: inline-block;" class="btn btn-primary" href="/register"><i class="fas fa-user-plus"></i>Sign Up</a></li>
                                 
             </div>
         <% } else {
