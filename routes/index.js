@@ -130,15 +130,15 @@ router.post('/forgot', function(req, res, next) {
       },
       function(token, user, done) {
         const smtpTransport = nodemailer.createTransport({
-          service: 'Gmail', 
+          service: 'SendGrid', 
           auth: {
-            user: 'fishtankdiary2020@gmail.com',
-            pass: process.env.GMAILPW //process.env.GMAILPW
+            user: process.env.SENDGRIDUSERNAME,
+            pass: process.env.SENDGRIDPASS
           }
         });
         var mailOptions = {
           to: user.email,
-          from: 'fishtankdiary2020@gmail.com',
+          from: process.env.SENDGRIDEMAIL,
           subject: 'Fish Tank Diary Password Reset',
           text: 'You are receiving this because you (or someone else) have requested the reset of the password for your account on www.fishtankdiary.com.\n\n' +
             'Please click on the following link, or paste this into your browser to complete the process:\n\n' +
@@ -196,15 +196,15 @@ router.post('/reset/:token', function(req, res) {
       },
       function(user, done) {
         var smtpTransport = nodemailer.createTransport({
-          service: 'Gmail', 
+          service: 'SendGrid', 
           auth: {
-            user: 'fishtankdiary2020@gmail.com',
-            pass: process.env.GMAILPW ///change to heroku cfg file before upload. process.env.GMAILPW
+            user: process.env.SENDGRIDUSERNAME,
+            pass: process.env.SENDGRIDPASS
           }
         });
         var mailOptions = {
           to: user.email,
-          from: 'fishtankdiary2020@gmail.com',
+          from: process.env.SENDGRIDEMAIL,
           subject: 'Your password has been changed',
           text: 'Hello,\n\n' +
             'This is a confirmation that the password for your account ' + user.email + ' at www.fishtankdiary.com has just been changed.\n'
@@ -218,14 +218,5 @@ router.post('/reset/:token', function(req, res) {
       res.redirect('/posts');
     });
   });
-
-// HTTPS Config
-router.get('./well-known/acme-challenge/:content', (req, res) => {
-  res.send('f7Xtr8SFNLnvalYlh3Vb-rNOrIL7VsA5w3TDZHFe9j4._Ubg5UzH7joWqoCQQIH5RAnRssO_cjCJJgeBVI2uAtA');
-});
-
-router.get('/test', (req, res) => {
-  res.send('test complete');
-});
 
 module.exports = router;

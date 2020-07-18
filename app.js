@@ -49,7 +49,7 @@ app.locals.moment = require('moment');
 app.use(require("express-session")({
     secret: "Once again Rusty wins cutest dog!",
     resave: false,
-    saveUninitialize: false
+    saveUninitialized: false
 }));
 
 app.use(passport.initialize());

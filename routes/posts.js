@@ -55,7 +55,6 @@ router.post("/", middleware.isLoggedIn, function(req, res){
         if(err){
             console.log(err);
         } else{
-            console.log(newPost);
             req.flash("success", "You have successfully added a new entry");
             res.redirect("/posts");
         }
