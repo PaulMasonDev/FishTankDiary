@@ -71,7 +71,7 @@ app.use("/posts", postRoutes);
 
 // // SERVER INIT
 app.listen(process.env.PORT || 3000, function(){
-    console.log("SERVER IS RUNNING!");
+    console.log("SERVER IS RUNNING ON PORT 3000!");
 });
 
 // TESTING LOCAL ROUTE - BE SURE TO DISABLE SERVER INIT

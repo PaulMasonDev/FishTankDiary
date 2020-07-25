@@ -11,7 +11,10 @@ body {
 
 #landing-header h1 {
     color: #fff;
+    font-size: 100px;
 }
+
+
 
 .slideshow { 
     position: fixed;
@@ -86,3 +89,4 @@ body {
 .no-cssanimations .slideshow li {
 	opacity: 1;
 }
+
