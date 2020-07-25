@@ -1,8 +1,8 @@
-const express = require("express");
-const router = express.Router({mergeParams: true});
-const Post = require("../models/post");
-const Comment = require("../models/comment");
-const middleware = require("../middleware/");
+const express    = require("express"),
+      router     = express.Router({mergeParams: true}),
+      Post       = require("../models/post"),
+      Comment    = require("../models/comment"),
+      middleware = require("../middleware/");
 
 // NEW ROUTE
 router.get("/new", middleware.isLoggedIn, function(req, res){
@@ -17,14 +17,12 @@ router.get("/new", middleware.isLoggedIn, function(req, res){
 
 // CREATE ROUTE
 
-// NEED TO FIGURE OUT TIMESTAMP FOR COMMENTS
 router.post("/", middleware.isLoggedIn, function(req, res){
     Post.findById(req.params.id, function(err, post){
         if(err){
             console.log(err);
             res.redirect("/posts");
         } else {
-            
             Comment.create(req.body.comment, function(err, comment){
                 if(err){
                     console.log(err);
@@ -62,7 +60,6 @@ router.get("/:comment_id/edit", middleware.checkCommentOwnership, function(req, 
 });
 
 // UPDATE ROUTE
-
 router.put("/:comment_id", middleware.checkCommentOwnership, function(req, res) {
     Comment.findByIdAndUpdate(req.params.comment_id, req.body.comment, function(err, updatedComment){
         if(err){
@@ -75,7 +72,6 @@ router.put("/:comment_id", middleware.checkCommentOwnership, function(req, res) 
 });
 
 // DESTROY ROUTE
-
 router.delete("/:comment_id", middleware.checkCommentOwnership, function(req, res) {
     Comment.findByIdAndRemove(req.params.comment_id, function(err){
         if(err){

@@ -1,23 +1,16 @@
-const express = require("express");
-const router = express.Router();
-const passport = require("passport");
-const User = require("../models/user");
-const async = require("async");
-const nodemailer = require("nodemailer");
-const crypto = require("crypto");
-const user = require("../models/user");
-
-const serveIndex = require('serve-index');
+const express    = require("express"),
+      router     = express.Router(),
+      passport   = require("passport"),
+      User       = require("../models/user"),
+      async      = require("async"),
+      nodemailer = require("nodemailer"),
+      crypto     = require("crypto"),
+      user       = require("../models/user"),
+      serveIndex = require('serve-index');
 
 router.use('/.wellknown', express.static('./well-known'), serveIndex('.well-known'));
-//===================
-// require("dotenv").config();
-// console.log(process.env.GMAILPW);
-//===================
-
 
 //RESTful ROUTES
-
 router.get("/", function(req, res){
     res.render("landing");
 });
@@ -43,7 +36,6 @@ router.post("/register", function(req, res){
       if(req.body.adminCode === "secretcode123"){
         newUser.isAdmin = true;
       }
-
       const newUser = new User({
         username: req.body.username, 
         firstName: req.body.firstName,
@@ -51,7 +43,6 @@ router.post("/register", function(req, res){
         avatar: req.body.avatar,
         email: req.body.email
       });
-
       User.register(newUser, req.body.password, function(err, user){
         if(err){
           console.log(err);
@@ -119,10 +110,8 @@ router.post('/forgot', function(req, res, next) {
             req.flash('error', 'No account with that email address exists.');
             return res.redirect('/forgot');
           }
-  
           user.resetPasswordToken = token;
           user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
-  
           user.save(function(err) {
             done(err, token, user);
           });

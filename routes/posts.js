@@ -1,10 +1,9 @@
-const express = require("express");
-const router = express.Router({mergeParams: true});
-const Post = require("../models/post");
-const middleware = require("../middleware/")
+const express    = require("express"),
+      router     = express.Router({mergeParams: true}),
+      Post       = require("../models/post"),
+      middleware = require("../middleware/");
 
 // INDEX ROUTE
-
 router.get("/", function(req, res){
     Post.find({}, function(err, allPosts){
         if(err){
@@ -16,27 +15,25 @@ router.get("/", function(req, res){
 });
 
 // NEW ROUTE
-
 router.get("/new", middleware.isLoggedIn, function(req, res){
     res.render("posts/new", {page: "new"});
 });
 
 // CREATE ROUTE
-
 router.post("/", middleware.isLoggedIn, function(req, res){
-    const phLevel = req.body.phLevel;
-    const nitrates = req.body.nitrates;
-    const nitrites = req.body.nitrites;
-    const ammonia = req.body.ammonia;
-    const waterChanged = req.body.waterChanged;
-    const waterAmount = req.body.waterAmount;
-    const notes = req.body.notes;
-    const author = {
-        id: req.user._id,
-        username: req.user.username
-    };
-    const created = req.body.created;
-    const createdAt = req.body.createdAt;
+    const phLevel      = req.body.phLevel,
+          nitrates     = req.body.nitrates,
+          nitrites     = req.body.nitrites,
+          ammonia      = req.body.ammonia,
+          waterChanged = req.body.waterChanged,
+          waterAmount  = req.body.waterAmount,
+          notes        = req.body.notes,
+          author       = {
+            id: req.user._id,
+            username: req.user.username
+          },
+          created = req.body.created,
+          createdAt = req.body.createdAt,
 
     const newPost = {
         phLevel: phLevel,
@@ -62,7 +59,6 @@ router.post("/", middleware.isLoggedIn, function(req, res){
 });
 
 // SHOW ROUTE
-
 router.get("/:id", function(req, res){
     Post.findById(req.params.id).populate("comments").exec(function (err, foundPost){
         if(err){
@@ -74,7 +70,6 @@ router.get("/:id", function(req, res){
 });
 
 // EDIT ROUTE
-
 router.get("/:id/edit", middleware.checkPostOwnership, function(req, res){
     Post.findById(req.params.id, function (err, foundPost){
         res.render("posts/edit", {post: foundPost});
@@ -95,7 +90,6 @@ router.put("/:id", middleware.checkPostOwnership, function (req, res){
 
 
 // DESTROY ROUTE
-
 router.delete("/:id", middleware.checkPostOwnership, function(req, res){
     Post.findByIdAndRemove(req.params.id, function(err){
         if(err){

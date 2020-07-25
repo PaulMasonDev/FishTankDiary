@@ -1,8 +1,7 @@
 //all the middleware goes here
-const middlewareObj = {};
-const Post = require("../models/post");
-const Comment = require("../models/comment");
-
+const middlewareObj = {},
+      Post          = require("../models/post"),
+      Comment       = require("../models/comment");
 
 middlewareObj.checkPostOwnership = function(req, res, next) {
     if(req.isAuthenticated()){		
