@@ -33,7 +33,7 @@ router.post("/", middleware.isLoggedIn, function(req, res){
             username: req.user.username
           },
           created = req.body.created,
-          createdAt = req.body.createdAt,
+          createdAt = req.body.createdAt;
 
     const newPost = {
         phLevel: phLevel,
