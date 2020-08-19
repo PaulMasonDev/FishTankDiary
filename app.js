@@ -7,10 +7,12 @@ const express          = require("express"),
       flash            = require("connect-flash"),
       passport         = require("passport"),
       LocalStrategy    = require("passport-local"),
+      favicon          = require('express-favicon'),
       Post             = require("./models/post"),
       Comment          = require("./models/comment"),
       User             = require("./models/user");
 
+app.use(favicon(__dirname + '/public/favicon.ico'));
 
 require('dotenv').config();
 
